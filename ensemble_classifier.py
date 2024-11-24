@@ -295,6 +295,7 @@ class EnsembleClassifier(BaseEstimator, ClassifierMixin):
         y_val = pd.concat([self.cal_targets_, self.targets_])
         # X_val, y_val = self.cal_samples_, self.cal_targets_
 
+        # TomekLinks provides best conditions for perfect calibration
         X_val, y_val = TomekLinks().fit_resample(X_val, y_val)
 
         self.cal_voting_clf_.fit(X_val, y_val)
