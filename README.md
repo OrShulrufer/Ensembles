@@ -1,6 +1,6 @@
 # Ensembles: Advanced Ensemble Learning for Imbalanced Datasets
 
-This repository, **OrShulrufer/Ensembles**, provides a specialized implementation of ensemble learning techniques to address the challenges of highly imbalanced datasets. By leveraging dataset balancing, probabilistic calibration, and ensemble strategies, it ensures robust predictions for critical applications.
+This repository, **Ensembles**, provides a specialized implementation of ensemble learning techniques to address the challenges of highly imbalanced datasets. By leveraging dataset balancing, probabilistic calibration, and ensemble strategies, it ensures robust predictions for critical applications.
 
 ---
 
