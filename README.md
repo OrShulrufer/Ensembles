@@ -1,50 +1,62 @@
 # Ensembles: Advanced Ensemble Learning for Imbalanced Datasets
 
-This repository, **OrShulrufer/Ensembles**, implements advanced ensemble learning techniques to address the challenges posed by highly imbalanced datasets. It focuses on integrating multiple classifiers through a custom Voting Classifier, providing tools for balancing datasets, calibrating predictions, and rigorous evaluation.
+This repository, **OrShulrufer/Ensembles**, provides a specialized implementation of ensemble learning techniques to address the challenges of highly imbalanced datasets. By leveraging dataset balancing, probabilistic calibration, and ensemble strategies, it ensures robust predictions for critical applications.
+
+---
 
 ## Repository Structure
 
-- **`__init__.py`**: Initializes the package, importing the `EnsembleClassifier`.
-- **`ensemble_classifier.py`**: Contains the implementation of the `EnsembleClassifier`, including dataset balancing, model training, and calibrated prediction methods.
-- **`test.py`**: Provides a testing framework, generating synthetic datasets and evaluating the performance of the `EnsembleClassifier`.
-- **`README.md`**: Documentation detailing the setup and usage of the repository.
+- **`__init__.py`**: Initializes the package, exposing the `EnsembleClassifier`.
+- **`ensemble_classifier.py`**: Core implementation file containing the `EnsembleClassifier` class, equipped with methods for dataset balancing, classifier optimization, and calibrated voting mechanisms.
+- **`test.py`**: Testing framework with synthetic dataset generation and performance evaluation, including visualization tools.
+- **`requirements.txt`**: Contains all necessary dependencies for easy installation.
+- **`README.md`**: Documentation outlining the project, structure, and usage.
+
+---
 
 ## Features
 
-- **Custom Voting Classifier**: Combines multiple machine learning models for enhanced predictions, ensuring flexibility and precision.
-- **Dataset Balancing**: Automatically creates balanced subsets from imbalanced data for improved training.
-- **Calibration**: Uses the sigmoid method to generate accurate probabilistic outputs.
-- **Synthetic Dataset Testing**: Includes a dataset generator to evaluate the classifier's performance under controlled conditions.
+- **Custom Voting Classifier**: Integrates multiple classifiers to achieve robust, reliable predictions.
+- **Dataset Balancing**: Creates balanced subsets dynamically for training on imbalanced datasets.
+- **Calibration**: Ensures probabilistic outputs are accurate using the sigmoid calibration method.
+- **Synthetic Dataset Testing**: Provides tools to evaluate the methodology under controlled imbalanced scenarios.
 
-## Getting Started
+---
 
-### Prerequisites
-[Uploading requirements.txt…]()
+## Prerequisites
 
-Ensure Python 3.8 or later is installed. Required libraries include `pandas`, `numpy`, `scikit-learn`, and `joblib`. Install dependencies using the following command:
+- Python 3.8 or later
+- Install dependencies using:
+  ```bash
+  pip install -r requirements.txt
+Usage
+Running the Ensemble Classifier
+The ensemble_classifier.py file includes the EnsembleClassifier class, which can be imported into your project or directly tested using test.py.
 
-pip install -r requirements.txt
-Installation and Usage
-Clone the repository and navigate to its directory:
+Testing the Classifier
+The test.py script demonstrates the classifier's performance:
 
-bash
-Copy code
-git clone https://github.com/OrShulrufer/Ensembles.git
-cd Ensembles
-The core implementation is available in ensemble_classifier.py. Import the EnsembleClassifier class into your project or use the provided test.py script to evaluate the methodology.
-
-Running the Test
-The test.py script demonstrates the classifier's capabilities on a synthetic dataset:
-
-Generates a dataset with 100,000 samples, 20 features, 15 informative features, and 3 clusters per class, with an imbalance ratio of 98% negatives and 2% positives.
-Trains the EnsembleClassifier on dynamically balanced subsets.
-Evaluates the model using performance metrics such as accuracy, precision, recall, F1-score, and AUC.
-Run the test with the following command:
+Dataset Generation: Creates a synthetic dataset with 100,000 samples, 20 features, 15 informative features, and an imbalance ratio of 98% negatives to 2% positives.
+Model Training: Trains the EnsembleClassifier on balanced subsets of the dataset.
+Evaluation: Outputs metrics like accuracy, precision, recall, F1-score, and AUC.
+Run the test with:
 
 bash
 Copy code
 python test.py
-The script outputs a confusion matrix, AUC scores, and other metrics for analysis.
-
+Key Components
+EnsembleClassifier: Includes methods such as:
+_create_balanced_datasets: Dynamically creates balanced subsets.
+_optimize_classifier: Optimizes individual classifiers for voting.
+create_voting_classifier: Constructs the Voting Classifier.
+create_calibrated_voting_classifier: Applies sigmoid calibration.
+fit, predict_proba, predict: Core methods for training and inference.
+Testing Tools:
+generate_dataset: Synthetic dataset generation.
+plot_balanced_comparison: Visualizes performance on balanced vs imbalanced data.
 Results
-The ensemble methodology effectively addresses the imbalance challenge, providing calibrated probabilistic predictions and achieving high performance across key metrics. Results from the test demonstrate the classifier's robustness in handling extreme class distributions.
+The ensemble methodology addresses class imbalance effectively, ensuring calibrated probabilistic outputs and achieving high performance across various metrics. Visualization tools in test.py illustrate model performance.
+
+Contributions
+Contributions are welcome! Fork the repository, make improvements, and submit a pull request for review.
+
