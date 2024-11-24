@@ -17,8 +17,7 @@ from sklearn.utils import shuffle
 from xgboost import XGBClassifier
 from sklearn.base import BaseEstimator, ClassifierMixin
 logging.basicConfig(filename='Ensembles/logs.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-from imblearn.under_sampling import RandomUnderSampler
-from imblearn.under_sampling import NearMiss
+from imblearn.under_sampling import TomekLinks
 
 
 
@@ -296,7 +295,7 @@ class EnsembleClassifier(BaseEstimator, ClassifierMixin):
         y_val = pd.concat([self.cal_targets_, self.targets_])
         # X_val, y_val = self.cal_samples_, self.cal_targets_
 
-        X_val, y_val = NearMiss(version=3).fit_resample(X_val, y_val)
+        X_val, y_val = TomekLinks().fit_resample(X_val, y_val)
 
         self.cal_voting_clf_.fit(X_val, y_val)
 
