@@ -143,7 +143,7 @@ class EnsembleClassifier(BaseEstimator, ClassifierMixin):
                                 'subsample': [0.6, 0.8, 1.0],
                                 'monotone_constraints': [None, (1,-1)],
                                 'grow_policy': ['depthwise', 'lossguide'],
-                                'num_parallel_tree': [1, 3, 9, 100]
+                                'num_parallel_tree': [1, 3, 9]
                                 },
                             'ExtraTreesClassifier': {
                                 'oob_score':[True, False],
