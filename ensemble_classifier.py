@@ -72,7 +72,7 @@ class EnsembleClassifier(BaseEstimator, ClassifierMixin):
                                     "monotone_constraints": None,  
                                     "n_estimators": 100,
                                     "n_jobs": 1,
-                                    "num_parallel_tree": 5,
+                                    "num_parallel_tree": 1,
                                     "random_state": 42,
                                     "reg_alpha": 0,
                                     "reg_lambda": 0,
@@ -142,7 +142,8 @@ class EnsembleClassifier(BaseEstimator, ClassifierMixin):
                                 'max_depth': [6, 9, 12],
                                 'subsample': [0.6, 0.8, 1.0],
                                 'monotone_constraints': [None, (1,-1)],
-                                'grow_policy': ['depthwise', 'lossguide']
+                                'grow_policy': ['depthwise', 'lossguide'],
+                                'num_parallel_tree': [1, 3, 9, 100]
                                 },
                             'ExtraTreesClassifier': {
                                 'oob_score':[True, False],
