@@ -85,6 +85,25 @@ def plot_balanced_comparison(classifiers, X_test, y_test):
 
 
 
+def plot_calibration_comparison(y_true, y_prob, n_bins=10):
+
+    true_probs_uniform, pred_probs_uniform = calibration_curve(y_true, y_prob, n_bins=n_bins, strategy='uniform')
+
+    true_probs_quantile, pred_probs_quantile = calibration_curve(y_true, y_prob, n_bins=n_bins, strategy='quantile')
+
+    plt.figure(figsize=(10, 6))
+    plt.plot([0, 1], [0, 1], "k--", label="Perfect Calibration")
+    plt.plot(pred_probs_uniform, true_probs_uniform, label="Uniform Binning")
+    plt.plot(pred_probs_quantile, true_probs_quantile, label="Quantile Binning")
+    plt.title("Calibration Curve: Uniform vs Quantile Strategies")
+    plt.xlabel("Mean Predicted Probability")
+    plt.ylabel("Fraction of Positives")
+    plt.legend(loc="best")
+    plt.grid(True)
+    plt.show()
+
+
+
 if __name__ == "__main__":
 
     X, y = generate_dataset()
@@ -136,3 +155,5 @@ if __name__ == "__main__":
     classifiers.append(("Ensemble", ensemble_clf))
 
     plot_balanced_comparison(classifiers, X_test, y_test)
+
+    plot_calibration_comparison(y_true=y_test, y_prob=y_prob)
